@@ -1,0 +1,291 @@
+:root{
+  --bg1:#060616;
+  --bg2:#150814;
+  --bg3:#32061d;
+  --rose:#ff2b5c;
+  --rose-dark:#c0123b;
+  --rose-light:#ff6b8f;
+  --stem:#0b7c42;
+  --leaf:#15a155;
+  --wrap:#f5e0d5;
+  --wrap-shadow:#e0c2b0;
+  --ribbon:#ff2144;
+  --text:#f7f0ff;
+  --muted:#ccb7dd;
+  --glow:0 0 30px rgba(255,68,122,.65);
+  --floating: 7s;
+  --tiny-floating: 11s;
+  --max:900px;
+  --font: system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
+}
+
+*,
+*::before,
+*::after{box-sizing:border-box;margin:0;padding:0}
+
+body{
+  min-height:100vh;
+  font-family:var(--font);
+  color:var(--text);
+  background: radial-gradient(circle at 20% 0%, #ff6b8f22 0, transparent 55%),
+              radial-gradient(circle at 80% 0%, #ff214422 0, transparent 55%),
+              linear-gradient(180deg,var(--bg1),var(--bg2),var(--bg3));
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+}
+
+.sky{
+  pointer-events:none;
+  position:fixed;
+  inset:0;
+  z-index:-2;
+}
+
+.stars{
+  width:100%;
+  height:100%;
+  background-image:
+    radial-gradient(1px 1px at 10% 20%, #ffffff66 0, transparent 50%),
+    radial-gradient(1px 1px at 30% 80%, #ffffff66 0, transparent 50%),
+    radial-gradient(1px 1px at 60% 30%, #ffffff66 0, transparent 50%),
+    radial-gradient(1px 1px at 90% 60%, #ffffff66 0, transparent 50%);
+  opacity:.7;
+}
+
+.gradient{
+  position:absolute;
+  inset:0;
+  background: radial-gradient(circle at 50% -20%, #ff6b8f22 0, transparent 60%);
+}
+
+.header{
+  text-align:center;
+  padding:28px 16px 10px;
+  max-width:var(--max);
+}
+.header h1{
+  font-size:clamp(28px,4vw,40px);
+  text-shadow:var(--glow);
+}
+.header p{
+  margin-top:8px;
+  color:var(--muted);
+}
+
+main{
+  width:100%;
+  max-width:var(--max);
+  padding:10px 16px 24px;
+}
+
+.scene{
+  position:relative;
+  display:flex;
+  justify-content:center;
+  align-items:flex-end;
+  min-height:320px;
+  margin-top:24px;
+}
+
+/* BOUQUET */
+.bouquet-wrapper{
+  position:relative;
+  width:260px;
+  height:260px;
+  display:flex;
+  justify-content:center;
+  align-items:flex-end;
+}
+
+.bouquet-shadow{
+  position:absolute;
+  bottom:16px;
+  left:50%;
+  transform:translateX(-50%);
+  width:150px;
+  height:26px;
+  background:radial-gradient(circle at 50% 50%, #00000055 0, transparent 70%);
+  filter:blur(4px);
+}
+
+.bouquet{
+  position:relative;
+  width:220px;
+  height:260px;
+}
+
+.floating{
+  animation:float var(--floating) ease-in-out infinite;
+}
+@keyframes float{
+  0%,100%{transform:translateY(0) translateX(0)}
+  50%{transform:translateY(-18px) translateX(4px)}
+}
+
+/* singola rosa */
+.rose{
+  position:absolute;
+  bottom:80px;
+  width:80px;
+  height:160px;
+}
+.rose--left{left:10px; transform:rotate(-8deg);}
+.rose--center{left:70px; transform:translateY(-15px);}
+.rose--right{right:10px; transform:rotate(8deg);}
+
+/* gambo */
+.stem{
+  position:absolute;
+  bottom:0;
+  left:50%;
+  width:6px;
+  height:110px;
+  transform:translateX(-50%);
+  background:linear-gradient(180deg,var(--stem),#064d26);
+  border-radius:999px;
+}
+
+/* foglie */
+.leaf{
+  position:absolute;
+  width:30px;
+  height:18px;
+  background:var(--leaf);
+  border-radius:50% 0 50% 0;
+  box-shadow:0 0 6px rgba(0,0,0,.25);
+}
+.leaf-left{
+  left:45%;
+  top:80px;
+  transform:translateX(-50%) rotate(-22deg);
+}
+.leaf-right{
+  left:55%;
+  top:95px;
+  transform:translateX(-50%) rotate(22deg) scaleX(-1);
+}
+
+/* bocciolo e petali */
+.bud{
+  position:absolute;
+  top:20px;
+  left:50%;
+  width:46px;
+  height:46px;
+  transform:translateX(-50%);
+  background:radial-gradient(circle at 30% 20%, var(--rose-light) 0, var(--rose) 40%, var(--rose-dark) 80%);
+  border-radius:50% 50% 40% 40%;
+  box-shadow:var(--glow);
+}
+
+.petal{
+  position:absolute;
+  width:34px;
+  height:40px;
+  background:radial-gradient(circle at 30% 20%, var(--rose-light) 0, var(--rose) 45%, var(--rose-dark) 80%);
+  border-radius:60% 60% 30% 30%;
+  top:18px;
+  left:50%;
+  transform-origin:bottom center;
+}
+.petal-1{transform:translateX(-50%) rotate(-25deg);}
+.petal-2{transform:translateX(-50%) rotate(25deg);}
+.petal-3{
+  transform:translateX(-50%) translateY(6px);
+  width:36px;
+}
+.petal-4{
+  transform:translateX(-50%) translateY(10px) scale(.92);
+  opacity:.9;
+}
+
+/* carta del bouquet */
+.wrap{
+  position:absolute;
+  bottom:0;
+  left:50%;
+  transform:translateX(-50%);
+  width:160px;
+  height:120px;
+}
+
+.wrap-left,
+.wrap-right{
+  position:absolute;
+  bottom:0;
+  width:50%;
+  height:100%;
+  background:var(--wrap);
+  box-shadow:0 8px 20px rgba(0,0,0,.45);
+}
+.wrap-left{
+  left:0;
+  border-radius:80px 0 20px 80px;
+  transform-origin:bottom left;
+  transform:skewX(-8deg);
+  background:linear-gradient(135deg,var(--wrap),var(--wrap-shadow));
+}
+.wrap-right{
+  right:0;
+  border-radius:0 80px 80px 20px;
+  transform-origin:bottom right;
+  transform:skewX(8deg);
+  background:linear-gradient(225deg,var(--wrap),var(--wrap-shadow));
+}
+
+.ribbon{
+  position:absolute;
+  bottom:26px;
+  left:50%;
+  transform:translateX(-50%);
+  width:70px;
+  height:18px;
+  background:linear-gradient(90deg,#ff2144,#ff6b8f);
+  border-radius:999px;
+  box-shadow:0 0 12px rgba(255,33,68,.7);
+}
+
+/* rose “lontane” ideologiche */
+.floating-rose{
+  position:absolute;
+  width:26px;
+  height:26px;
+  border-radius:50%;
+  background:radial-gradient(circle at 30% 20%, var(--rose-light) 0, var(--rose) 50%, var(--rose-dark) 90%);
+  box-shadow:0 0 14px rgba(255,68,122,.7);
+}
+.tiny{
+  animation:tiny-float var(--tiny-floating) ease-in-out infinite;
+}
+@keyframes tiny-float{
+  0%,100%{transform:translateY(0)}
+  50%{transform:translateY(-26px)}
+}
+.tiny-1{left:5%; top:18%;}
+.tiny-2{right:8%; top:30%;}
+.tiny-3{left:20%; top:55%;}
+
+/* caption + footer */
+.caption{
+  margin-top:24px;
+  text-align:center;
+}
+.caption p{
+  color:var(--muted);
+  max-width:540px;
+  margin:0 auto;
+}
+
+.footer{
+  padding:20px 16px 24px;
+  text-align:center;
+  color:var(--muted);
+  font-size:12px;
+}
+
+/* responsive */
+@media (max-width:600px){
+  .bouquet-wrapper{width:220px;height:240px;}
+  .bouquet{width:200px;height:240px;}
+}
