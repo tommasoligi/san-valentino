@@ -1,20 +1,21 @@
 :root{
-  --bg1:#060616;
-  --bg2:#150814;
-  --bg3:#32061d;
+  --bg1:#050513;
+  --bg2:#14091b;
+  --bg3:#2b041b;
   --rose:#ff2b5c;
-  --rose-dark:#c0123b;
-  --rose-light:#ff6b8f;
+  --rose-mid:#f9426c;
+  --rose-light:#ffd1df;
+  --rose-deep:#990826;
   --stem:#0b7c42;
   --leaf:#15a155;
+  --leaf-dark:#0b5f35;
   --wrap:#f5e0d5;
-  --wrap-shadow:#e0c2b0;
+  --wrap-shadow:#ddc0b0;
   --ribbon:#ff2144;
   --text:#f7f0ff;
   --muted:#ccb7dd;
   --glow:0 0 30px rgba(255,68,122,.65);
-  --floating: 7s;
-  --tiny-floating: 11s;
+  --floating: 7.5s;
   --max:900px;
   --font: system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
 }
@@ -27,8 +28,8 @@ body{
   min-height:100vh;
   font-family:var(--font);
   color:var(--text);
-  background: radial-gradient(circle at 20% 0%, #ff6b8f22 0, transparent 55%),
-              radial-gradient(circle at 80% 0%, #ff214422 0, transparent 55%),
+  background: radial-gradient(circle at 20% 0%, #ff6b8f26 0, transparent 55%),
+              radial-gradient(circle at 80% 0%, #ff214426 0, transparent 55%),
               linear-gradient(180deg,var(--bg1),var(--bg2),var(--bg3));
   display:flex;
   flex-direction:column;
@@ -41,7 +42,6 @@ body{
   inset:0;
   z-index:-2;
 }
-
 .stars{
   width:100%;
   height:100%;
@@ -52,7 +52,6 @@ body{
     radial-gradient(1px 1px at 90% 60%, #ffffff66 0, transparent 50%);
   opacity:.7;
 }
-
 .gradient{
   position:absolute;
   inset:0;
@@ -61,7 +60,7 @@ body{
 
 .header{
   text-align:center;
-  padding:28px 16px 10px;
+  padding:28px 16px 14px;
   max-width:var(--max);
 }
 .header h1{
@@ -71,6 +70,49 @@ body{
 .header p{
   margin-top:8px;
   color:var(--muted);
+}
+
+/* ROUTE (email trattini Italia→Argentina) */
+.route{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:10px;
+  padding:12px 16px 0;
+  max-width:var(--max);
+  width:100%;
+}
+.route-label{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:4px;
+  font-size:13px;
+  color:var(--muted);
+}
+.flag{font-size:20px}
+.route-line{
+  flex:1;
+  height:40px;
+}
+.route-line__dash{
+  stroke-linecap:round;
+  animation:dash-move 1.2s linear infinite;
+}
+@keyframes dash-move{
+  to{stroke-dashoffset:-28;}
+}
+/* “aeroplanino” sull’email */
+.route-line__plane{
+  stroke-dasharray:380;
+  stroke-dashoffset:380;
+  animation:plane-move 4.2s ease-in-out infinite;
+}
+@keyframes plane-move{
+  0%{stroke-dashoffset:380;}
+  45%{stroke-dashoffset:0;}
+  55%{stroke-dashoffset:0;}
+  100%{stroke-dashoffset:380;}
 }
 
 main{
@@ -85,7 +127,7 @@ main{
   justify-content:center;
   align-items:flex-end;
   min-height:320px;
-  margin-top:24px;
+  margin-top:18px;
 }
 
 /* BOUQUET */
@@ -97,7 +139,6 @@ main{
   justify-content:center;
   align-items:flex-end;
 }
-
 .bouquet-shadow{
   position:absolute;
   bottom:16px;
@@ -108,99 +149,106 @@ main{
   background:radial-gradient(circle at 50% 50%, #00000055 0, transparent 70%);
   filter:blur(4px);
 }
-
 .bouquet{
   position:relative;
   width:220px;
   height:260px;
 }
-
 .floating{
   animation:float var(--floating) ease-in-out infinite;
 }
 @keyframes float{
-  0%,100%{transform:translateY(0) translateX(0)}
-  50%{transform:translateY(-18px) translateX(4px)}
+  0%,100%{transform:translateY(0) translateX(0) rotate(-1deg);}
+  50%{transform:translateY(-20px) translateX(6px) rotate(1deg);}
 }
 
-/* singola rosa */
+/* ROSE più realistiche: anelli di petali */
 .rose{
   position:absolute;
   bottom:80px;
-  width:80px;
+  width:90px;
   height:160px;
 }
-.rose--left{left:10px; transform:rotate(-8deg);}
-.rose--center{left:70px; transform:translateY(-15px);}
-.rose--right{right:10px; transform:rotate(8deg);}
+.rose--left{left:6px; transform:rotate(-10deg);}
+.rose--center{left:70px; transform:translateY(-18px);}
+.rose--right{right:6px; transform:rotate(9deg);}
 
 /* gambo */
 .stem{
   position:absolute;
   bottom:0;
   left:50%;
-  width:6px;
-  height:110px;
+  width:7px;
+  height:118px;
   transform:translateX(-50%);
   background:linear-gradient(180deg,var(--stem),#064d26);
   border-radius:999px;
+  box-shadow:0 0 6px rgba(0,0,0,.5);
 }
 
 /* foglie */
 .leaf{
   position:absolute;
-  width:30px;
-  height:18px;
-  background:var(--leaf);
-  border-radius:50% 0 50% 0;
-  box-shadow:0 0 6px rgba(0,0,0,.25);
+  width:34px;
+  height:20px;
+  background:radial-gradient(circle at 20% 20%, #52e28c, var(--leaf));
+  border-radius:80% 0 80% 0;
+  box-shadow:0 0 6px rgba(0,0,0,.4);
 }
 .leaf-left{
   left:45%;
-  top:80px;
-  transform:translateX(-50%) rotate(-22deg);
+  top:82px;
+  transform:translateX(-50%) rotate(-28deg);
 }
 .leaf-right{
-  left:55%;
-  top:95px;
-  transform:translateX(-50%) rotate(22deg) scaleX(-1);
+  left:57%;
+  top:100px;
+  transform:translateX(-50%) rotate(24deg) scaleX(-1);
 }
 
-/* bocciolo e petali */
-.bud{
+/* anelli di petali */
+.petal-ring{
   position:absolute;
-  top:20px;
   left:50%;
-  width:46px;
-  height:46px;
+  top:26px;
+  width:70px;
+  height:70px;
   transform:translateX(-50%);
-  background:radial-gradient(circle at 30% 20%, var(--rose-light) 0, var(--rose) 40%, var(--rose-dark) 80%);
-  border-radius:50% 50% 40% 40%;
-  box-shadow:var(--glow);
+  border-radius:50%;
+  background:
+    radial-gradient(circle at 30% 20%, var(--rose-light) 0, var(--rose-mid) 25%, transparent 60%),
+    radial-gradient(circle at 70% 80%, #7a021d 0, var(--rose-deep) 55%, transparent 70%),
+    conic-gradient(from 200deg, var(--rose) 0 120deg, var(--rose-mid) 120deg 220deg, var(--rose-deep) 220deg 360deg);
+  box-shadow:0 0 14px rgba(0,0,0,.6);
+  mask-image:radial-gradient(circle at 50% 45%, transparent 0 18%, #000 28% 100%);
+}
+.petal-ring--outer{
+  transform:translateX(-50%) scale(1.05);
+  filter:blur(0.2px);
+  opacity:.92;
+}
+.petal-ring--inner{
+  top:32px;
+  width:54px;
+  height:54px;
+  filter:brightness(1.05);
 }
 
-.petal{
+/* centro bocciolo */
+.bud-core{
   position:absolute;
-  width:34px;
-  height:40px;
-  background:radial-gradient(circle at 30% 20%, var(--rose-light) 0, var(--rose) 45%, var(--rose-dark) 80%);
-  border-radius:60% 60% 30% 30%;
-  top:18px;
+  top:42px;
   left:50%;
-  transform-origin:bottom center;
-}
-.petal-1{transform:translateX(-50%) rotate(-25deg);}
-.petal-2{transform:translateX(-50%) rotate(25deg);}
-.petal-3{
-  transform:translateX(-50%) translateY(6px);
-  width:36px;
-}
-.petal-4{
-  transform:translateX(-50%) translateY(10px) scale(.92);
-  opacity:.9;
+  width:26px;
+  height:26px;
+  transform:translateX(-50%);
+  border-radius:50%;
+  background:
+    radial-gradient(circle at 30% 25%, var(--rose-light) 0, var(--rose-mid) 25%, var(--rose) 55%, var(--rose-deep) 95%);
+  box-shadow:0 0 10px rgba(0,0,0,.7);
 }
 
-/* carta del bouquet */
+/* carta bouquet */
 .wrap{
   position:absolute;
   bottom:0;
@@ -209,7 +257,6 @@ main{
   width:160px;
   height:120px;
 }
-
 .wrap-left,
 .wrap-right{
   position:absolute;
@@ -233,42 +280,50 @@ main{
   transform:skewX(8deg);
   background:linear-gradient(225deg,var(--wrap),var(--wrap-shadow));
 }
-
 .ribbon{
   position:absolute;
   bottom:26px;
   left:50%;
   transform:translateX(-50%);
-  width:70px;
+  width:72px;
   height:18px;
   background:linear-gradient(90deg,#ff2144,#ff6b8f);
   border-radius:999px;
   box-shadow:0 0 12px rgba(255,33,68,.7);
 }
 
-/* rose “lontane” ideologiche */
-.floating-rose{
+/* “bit” di rose che scorrono sotto, come pacchetti dati */
+.bit-rose{
   position:absolute;
-  width:26px;
-  height:26px;
+  bottom:32px;
+  width:22px;
+  height:22px;
   border-radius:50%;
-  background:radial-gradient(circle at 30% 20%, var(--rose-light) 0, var(--rose) 50%, var(--rose-dark) 90%);
-  box-shadow:0 0 14px rgba(255,68,122,.7);
+  background:radial-gradient(circle at 30% 20%, var(--rose-light) 0, var(--rose) 50%, var(--rose-deep) 90%);
+  box-shadow:0 0 12px rgba(255,68,122,.7);
+  opacity:.9;
 }
-.tiny{
-  animation:tiny-float var(--tiny-floating) ease-in-out infinite;
+.bit-rose--1{
+  left:10%;
+  animation:bit-move 6s linear infinite;
 }
-@keyframes tiny-float{
-  0%,100%{transform:translateY(0)}
-  50%{transform:translateY(-26px)}
+.bit-rose--2{
+  left:-10%;
+  animation:bit-move 7.5s linear infinite 0.6s;
 }
-.tiny-1{left:5%; top:18%;}
-.tiny-2{right:8%; top:30%;}
-.tiny-3{left:20%; top:55%;}
+.bit-rose--3{
+  left:-25%;
+  animation:bit-move 9s linear infinite 1.2s;
+}
+@keyframes bit-move{
+  0%{transform:translateX(0); opacity:0;}
+  10%{opacity:1;}
+  80%{opacity:1;}
+  100%{transform:translateX(140vw); opacity:0;}
+}
 
-/* caption + footer */
 .caption{
-  margin-top:24px;
+  margin-top:26px;
   text-align:center;
 }
 .caption p{
@@ -285,7 +340,9 @@ main{
 }
 
 /* responsive */
-@media (max-width:600px){
-  .bouquet-wrapper{width:220px;height:240px;}
-  .bouquet{width:200px;height:240px;}
+@media (max-width:650px){
+  .route{flex-direction:column; gap:4px;}
+  .route-line{width:100%;}
+  .bouquet-wrapper{width:230px;height:240px;}
+  .bouquet{width:210px;height:240px;}
 }
