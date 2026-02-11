@@ -1,5 +1,5 @@
-// durata totale “invio”: deve coprire l’ultima rose-packet (6s + ultimi delay)
-const TOTAL_SEND_MS = 6000 + 2400 + 800; // ~9.2s
+// durata totale invio = durata keyframe + ultimo delay
+const TOTAL_SEND_MS = 5000 + 1800 + 500; // ~7.3s
 
 const bouquetWrapper = document.getElementById("bouquetWrapper");
 const caption = document.getElementById("captionText");
@@ -13,23 +13,14 @@ function showBouquet(){
   }
 }
 
-// opzionale: piccolo loop di “invio” (riavvio animazioni) se vuoi farlo ripartire
+// opzionale: funzione per riavviare l’effetto (se vuoi ciclarlo)
 function restartPackets(){
   packets.forEach(p => {
     p.style.animation = "none";
-    // reflow per riattivare la keyframe animation. [web:57]
-    void p.offsetWidth;
+    void p.offsetWidth; // reflow per riattivare l’animazione
     p.style.animation = "";
   });
 }
 
-// una sola volta: invio e poi bouquet
+// una sola volta
 setTimeout(showBouquet, TOTAL_SEND_MS);
-
-// Se vuoi ciclarlo, puoi usare:
-/// setInterval(() => {
-///   bouquetWrapper.classList.remove("bouquet-visible");
-///   caption.textContent = "Invio in corso: le rose stanno attraversando l’oceano digitale…";
-///   restartPackets();
-///   setTimeout(showBouquet, TOTAL_SEND_MS);
-/// }, TOTAL_SEND_MS + 4000);
