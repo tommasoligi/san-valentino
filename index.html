@@ -1,221 +1,89 @@
 <!doctype html>
 <html lang="it">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>San Valentino – Spedisci Rose a Distanza</title>
-  <link rel="stylesheet" href="styles.css" />
+  <meta charset="utf-8">
+  <title>Rose a Distanza – San Valentino</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
-  <header class="topbar">
-    <div class="container topbar__inner">
-      <a class="brand" href="#home" aria-label="Home">
-        <span class="brand__mark">🌹</span>
-        <span class="brand__name">Rose a Distanza</span>
-      </a>
+  <div class="sky">
+    <div class="stars"></div>
+    <div class="gradient"></div>
+  </div>
 
-      <nav class="nav">
-        <a href="#scegli">Scegli</a>
-        <a href="#ordine">Ordina</a>
-        <a href="#modello">Modello</a>
-      </nav>
-    </div>
+  <header class="header">
+    <h1>Rose a Distanza</h1>
+    <p>Un viaggio di rose che volano verso chi ami, solo con HTML &amp; CSS.</p>
   </header>
 
-  <main id="home">
-    <section class="hero">
-      <div class="container hero__grid">
-        <div>
-          <h1>San Valentino: invia rose, anche se sei lontano.</h1>
-          <p class="muted">
-            Compila l’ordine, personalizza il messaggio e genera il tuo modello (riepilogo) pronto da inviare o stampare.
-          </p>
-          <div class="actions">
-            <a class="btn btn--primary" href="#ordine">Crea ordine</a>
-            <a class="btn btn--ghost" href="#scegli">Vedi pacchetti</a>
+  <main>
+    <section class="scene">
+      <!-- bouquet “spedito” -->
+      <div class="bouquet-wrapper">
+        <div class="bouquet-shadow"></div>
+        <div class="bouquet floating">
+          <!-- tre rose principali -->
+          <div class="rose rose--left">
+            <div class="petal petal-1"></div>
+            <div class="petal petal-2"></div>
+            <div class="petal petal-3"></div>
+            <div class="petal petal-4"></div>
+            <div class="bud"></div>
+            <div class="stem"></div>
+            <div class="leaf leaf-left"></div>
+            <div class="leaf leaf-right"></div>
           </div>
 
-          <ul class="badges">
-            <li>Consegna programmata</li>
-            <li>Messaggio personalizzato</li>
-            <li>Riepilogo automatico</li>
-          </ul>
-        </div>
+          <div class="rose rose--center">
+            <div class="petal petal-1"></div>
+            <div class="petal petal-2"></div>
+            <div class="petal petal-3"></div>
+            <div class="petal petal-4"></div>
+            <div class="bud"></div>
+            <div class="stem"></div>
+            <div class="leaf leaf-left"></div>
+            <div class="leaf leaf-right"></div>
+          </div>
 
-        <div class="card hero__card">
-          <h2 class="h3">Come funziona</h2>
-          <ol class="steps">
-            <li>Scegli il pacchetto rose e la data.</li>
-            <li>Inserisci i dati del destinatario.</li>
-            <li>Genera il modello e condividilo.</li>
-          </ol>
-          <p class="tiny muted">
-            Nota: questo è un template front-end; per pagamenti e invio ordine serve un backend.
-          </p>
+          <div class="rose rose--right">
+            <div class="petal petal-1"></div>
+            <div class="petal petal-2"></div>
+            <div class="petal petal-3"></div>
+            <div class="petal petal-4"></div>
+            <div class="bud"></div>
+            <div class="stem"></div>
+            <div class="leaf leaf-left"></div>
+            <div class="leaf leaf-right"></div>
+          </div>
+
+          <!-- carta del bouquet -->
+          <div class="wrap">
+            <div class="wrap-left"></div>
+            <div class="wrap-right"></div>
+            <div class="ribbon"></div>
+          </div>
         </div>
       </div>
+
+      <!-- qualche rosa “lontana” che suggerisce il viaggio -->
+      <div class="floating-rose tiny tiny-1"></div>
+      <div class="floating-rose tiny tiny-2"></div>
+      <div class="floating-rose tiny tiny-3"></div>
     </section>
 
-    <section id="scegli" class="section">
-      <div class="container">
-        <h2>Pacchetti San Valentino</h2>
-        <p class="muted">Seleziona dal form il pacchetto che preferisci.</p>
-
-        <div class="grid3">
-          <article class="card">
-            <h3>Classico</h3>
-            <p class="muted">12 rose rosse + biglietto.</p>
-            <p class="price">€ 29,90</p>
-          </article>
-
-          <article class="card">
-            <h3>Romantico</h3>
-            <p class="muted">24 rose rosse + biglietto + confezione premium.</p>
-            <p class="price">€ 49,90</p>
-          </article>
-
-          <article class="card">
-            <h3>Wow</h3>
-            <p class="muted">50 rose rosse + biglietto + consegna “prioritaria”.</p>
-            <p class="price">€ 89,90</p>
-          </article>
-        </div>
-      </div>
+    <section class="caption">
+      <p>
+        Le rose non arrivano davvero, ma l’idea sì: un bouquet che viaggia nello schermo,
+        pensato per San Valentino.
+      </p>
     </section>
-
-    <section id="ordine" class="section section--alt">
-      <div class="container">
-        <h2>Crea il tuo ordine</h2>
-        <p class="muted">I campi con * sono obbligatori.</p>
-
-        <div class="grid2">
-          <form id="orderForm" class="card form" novalidate>
-            <h3 class="h3">Dati ordine</h3>
-
-            <div class="form__row">
-              <label for="package">Pacchetto *</label>
-              <select id="package" name="package" required>
-                <option value="">Seleziona…</option>
-                <option value="Classico|29.90">Classico (12 rose) – € 29,90</option>
-                <option value="Romantico|49.90">Romantico (24 rose) – € 49,90</option>
-                <option value="Wow|89.90">Wow (50 rose) – € 89,90</option>
-              </select>
-              <small class="error" id="packageError"></small>
-            </div>
-
-            <div class="form__row">
-              <label for="deliveryDate">Data consegna *</label>
-              <input id="deliveryDate" name="deliveryDate" type="date" required />
-              <small class="error" id="deliveryDateError"></small>
-            </div>
-
-            <div class="form__row">
-              <label for="timeslot">Fascia oraria *</label>
-              <select id="timeslot" name="timeslot" required>
-                <option value="">Seleziona…</option>
-                <option>09:00–12:00</option>
-                <option>12:00–15:00</option>
-                <option>15:00–18:00</option>
-                <option>18:00–21:00</option>
-              </select>
-              <small class="error" id="timeslotError"></small>
-            </div>
-
-            <hr class="sep" />
-
-            <h3 class="h3">Destinatario</h3>
-
-            <div class="form__row">
-              <label for="toName">Nome destinatario *</label>
-              <input id="toName" name="toName" type="text" placeholder="Es. Giulia" required />
-              <small class="error" id="toNameError"></small>
-            </div>
-
-            <div class="form__row">
-              <label for="address">Indirizzo consegna *</label>
-              <input id="address" name="address" type="text" placeholder="Via…, n°, città, CAP" required />
-              <small class="error" id="addressError"></small>
-            </div>
-
-            <div class="form__row">
-              <label for="phone">Telefono destinatario (opzionale)</label>
-              <input id="phone" name="phone" type="tel" placeholder="+39…" />
-              <small class="hint">Utile per il corriere se non trova il citofono.</small>
-            </div>
-
-            <div class="form__row">
-              <label for="note">Istruzioni per consegna (opzionale)</label>
-              <input id="note" name="note" type="text" placeholder="Es. citofono Rossi, interno 3" />
-            </div>
-
-            <hr class="sep" />
-
-            <h3 class="h3">Messaggio</h3>
-
-            <div class="form__row">
-              <label for="message">Testo biglietto *</label>
-              <textarea id="message" name="message" rows="4" maxlength="250" required
-                placeholder="Scrivi un messaggio breve (max 250 caratteri)…"></textarea>
-              <div class="rowSplit">
-                <small class="error" id="messageError"></small>
-                <small class="tiny muted" id="counter">0/250</small>
-              </div>
-            </div>
-
-            <div class="form__row">
-              <label for="fromName">Firma (da parte di) *</label>
-              <input id="fromName" name="fromName" type="text" placeholder="Es. Simone" required />
-              <small class="error" id="fromNameError"></small>
-            </div>
-
-            <div class="form__row check">
-              <input id="consent" name="consent" type="checkbox" required />
-              <label for="consent">
-                Ho letto l’informativa e accetto il trattamento dei dati per gestire l’ordine *
-              </label>
-              <small class="error" id="consentError"></small>
-              <small class="hint">
-                Suggerimento: metti un link alla tua privacy policy completa (GDPR art. 13). [web:6]
-              </small>
-            </div>
-
-            <div class="actions">
-              <button class="btn btn--primary" type="submit">Genera modello</button>
-              <button class="btn btn--ghost" type="reset">Reset</button>
-            </div>
-
-            <p class="tiny muted">
-              Questo form fa solo validazione lato client; per ordini reali serve validazione lato server.
-            </p>
-          </form>
-
-          <aside id="modello" class="card preview" aria-live="polite">
-            <div class="preview__head">
-              <h3 class="h3">Modello ordine</h3>
-              <div class="preview__actions">
-                <button id="copyBtn" class="btn btn--small" type="button" disabled>Copia</button>
-                <button id="printBtn" class="btn btn--small btn--ghost" type="button" disabled>Stampa</button>
-              </div>
-            </div>
-
-            <p class="muted">
-              Compila il form e premi “Genera modello”. Qui comparirà il riepilogo.
-            </p>
-
-            <pre id="templateBox" class="template" tabindex="0"></pre>
-          </aside>
-        </div>
-      </div>
-    </section>
-
-    <footer class="footer">
-      <div class="container footer__inner">
-        <p class="tiny muted">© <span id="year"></span> Rose a Distanza – Template demo.</p>
-      </div>
-    </footer>
   </main>
 
-  <script src="app.js"></script>
+  <footer class="footer">
+    <small>Template ideologico di rose “spedite” – puro front‑end.</small>
+  </footer>
+
+  <script src="script.js"></script>
 </body>
 </html>
