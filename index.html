@@ -2,7 +2,7 @@
 <html lang="it">
 <head>
   <meta charset="utf-8">
-  <title>Rose a Distanza – San Valentino</title>
+  <title>Rose a Distanza – Italia → Buenos Aires</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="style.css">
 </head>
@@ -14,50 +14,82 @@
 
   <header class="header">
     <h1>Rose a Distanza</h1>
-    <p>Un viaggio di rose che volano verso chi ami, solo con HTML &amp; CSS.</p>
+    <p>
+      Un bouquet di rose che viaggia dall’Italia a Buenos Aires,
+      come una vecchia email in fase di invio.
+    </p>
   </header>
 
   <main>
+    <!-- linea tratteggiata “email” Italia → Argentina -->
+    <section class="route">
+      <div class="route-label route-label--left">
+        <span class="flag">🇮🇹</span>
+        <span>Italia</span>
+      </div>
+
+      <svg class="route-line" viewBox="0 0 400 40" preserveAspectRatio="none">
+        <defs>
+          <marker id="plane" markerWidth="12" markerHeight="12" refX="6" refY="6"
+                  orient="auto">
+            <path d="M0,6 L12,6 M6,0 L12,6 L6,12"
+                  fill="none" stroke="#ff6b8f" stroke-width="1.4" />
+          </marker>
+        </defs>
+        <!-- linea “email” con trattini animati -->
+        <line x1="10" y1="20" x2="390" y2="20"
+              stroke="#ffbfd2"
+              stroke-width="2.5"
+              stroke-dasharray="6 8"
+              class="route-line__dash" />
+        <!-- stesso path per l’indicatore che avanza -->
+        <line x1="10" y1="20" x2="390" y2="20"
+              stroke="transparent"
+              stroke-width="2.5"
+              marker-end="url(#plane)"
+              class="route-line__plane" />
+      </svg>
+
+      <div class="route-label route-label--right">
+        <span class="flag">🇦🇷</span>
+        <span>Buenos Aires</span>
+      </div>
+    </section>
+
+    <!-- scena con bouquet realistico -->
     <section class="scene">
-      <!-- bouquet “spedito” -->
       <div class="bouquet-wrapper">
         <div class="bouquet-shadow"></div>
         <div class="bouquet floating">
-          <!-- tre rose principali -->
+          <!-- rose più “realistiche” -->
           <div class="rose rose--left">
-            <div class="petal petal-1"></div>
-            <div class="petal petal-2"></div>
-            <div class="petal petal-3"></div>
-            <div class="petal petal-4"></div>
-            <div class="bud"></div>
+            <div class="petal-ring petal-ring--outer"></div>
+            <div class="petal-ring petal-ring--inner"></div>
+            <div class="bud-core"></div>
             <div class="stem"></div>
             <div class="leaf leaf-left"></div>
             <div class="leaf leaf-right"></div>
           </div>
 
           <div class="rose rose--center">
-            <div class="petal petal-1"></div>
-            <div class="petal petal-2"></div>
-            <div class="petal petal-3"></div>
-            <div class="petal petal-4"></div>
-            <div class="bud"></div>
+            <div class="petal-ring petal-ring--outer"></div>
+            <div class="petal-ring petal-ring--inner"></div>
+            <div class="bud-core"></div>
             <div class="stem"></div>
             <div class="leaf leaf-left"></div>
             <div class="leaf leaf-right"></div>
           </div>
 
           <div class="rose rose--right">
-            <div class="petal petal-1"></div>
-            <div class="petal petal-2"></div>
-            <div class="petal petal-3"></div>
-            <div class="petal petal-4"></div>
-            <div class="bud"></div>
+            <div class="petal-ring petal-ring--outer"></div>
+            <div class="petal-ring petal-ring--inner"></div>
+            <div class="bud-core"></div>
             <div class="stem"></div>
             <div class="leaf leaf-left"></div>
             <div class="leaf leaf-right"></div>
           </div>
 
-          <!-- carta del bouquet -->
+          <!-- carta bouquet -->
           <div class="wrap">
             <div class="wrap-left"></div>
             <div class="wrap-right"></div>
@@ -66,22 +98,22 @@
         </div>
       </div>
 
-      <!-- qualche rosa “lontana” che suggerisce il viaggio -->
-      <div class="floating-rose tiny tiny-1"></div>
-      <div class="floating-rose tiny tiny-2"></div>
-      <div class="floating-rose tiny tiny-3"></div>
+      <!-- piccole rose “pacchetti” che scorrono come bytes in viaggio -->
+      <div class="bit-rose bit-rose--1"></div>
+      <div class="bit-rose bit-rose--2"></div>
+      <div class="bit-rose bit-rose--3"></div>
     </section>
 
     <section class="caption">
       <p>
-        Le rose non arrivano davvero, ma l’idea sì: un bouquet che viaggia nello schermo,
-        pensato per San Valentino.
+        Ogni passaggio dei trattini è un frammento del tuo pensiero
+        che vola dall’altra parte del mondo, in un bouquet di rose digitali.
       </p>
     </section>
   </main>
 
   <footer class="footer">
-    <small>Template ideologico di rose “spedite” – puro front‑end.</small>
+    <small>Concept: rose spedite via “email” – demo creativa in HTML, CSS &amp; SVG.</small>
   </footer>
 
   <script src="script.js"></script>
