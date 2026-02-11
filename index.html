@@ -15,40 +15,26 @@
   <header class="header">
     <h1>Rose a Distanza</h1>
     <p>
-      Un bouquet di rose che viaggia dall’Italia a Buenos Aires,
-      come una vecchia email in fase di invio.
+      Rose digitali che viaggiano dall’Italia a Buenos Aires come un vecchio invio email,
+      e alla fine si trasformano in un bouquet.
     </p>
   </header>
 
   <main>
-    <!-- linea tratteggiata “email” Italia → Argentina -->
+    <!-- Barra “invio email” con rose in viaggio -->
     <section class="route">
       <div class="route-label route-label--left">
         <span class="flag">🇮🇹</span>
         <span>Italia</span>
       </div>
 
-      <svg class="route-line" viewBox="0 0 400 40" preserveAspectRatio="none">
-        <defs>
-          <marker id="plane" markerWidth="12" markerHeight="12" refX="6" refY="6"
-                  orient="auto">
-            <path d="M0,6 L12,6 M6,0 L12,6 L6,12"
-                  fill="none" stroke="#ff6b8f" stroke-width="1.4" />
-          </marker>
-        </defs>
-        <!-- linea “email” con trattini animati -->
-        <line x1="10" y1="20" x2="390" y2="20"
-              stroke="#ffbfd2"
-              stroke-width="2.5"
-              stroke-dasharray="6 8"
-              class="route-line__dash" />
-        <!-- stesso path per l’indicatore che avanza -->
-        <line x1="10" y1="20" x2="390" y2="20"
-              stroke="transparent"
-              stroke-width="2.5"
-              marker-end="url(#plane)"
-              class="route-line__plane" />
-      </svg>
+      <!-- il percorso è definito via CSS offset-path -->
+      <div class="route-track">
+        <div class="rose-packet rose-packet--1"></div>
+        <div class="rose-packet rose-packet--2"></div>
+        <div class="rose-packet rose-packet--3"></div>
+        <div class="rose-packet rose-packet--4"></div>
+      </div>
 
       <div class="route-label route-label--right">
         <span class="flag">🇦🇷</span>
@@ -56,40 +42,20 @@
       </div>
     </section>
 
-    <!-- scena con bouquet realistico -->
+    <!-- Scena centrale: bouquet finale nascosto finché il “caricamento” non termina -->
     <section class="scene">
-      <div class="bouquet-wrapper">
+      <div class="bouquet-wrapper" id="bouquetWrapper">
         <div class="bouquet-shadow"></div>
-        <div class="bouquet floating">
-          <!-- rose più “realistiche” -->
-          <div class="rose rose--left">
-            <div class="petal-ring petal-ring--outer"></div>
-            <div class="petal-ring petal-ring--inner"></div>
-            <div class="bud-core"></div>
-            <div class="stem"></div>
-            <div class="leaf leaf-left"></div>
-            <div class="leaf leaf-right"></div>
-          </div>
+        <div class="bouquet bouquet--clean">
+          <!-- nuovo bouquet più semplice e “logo style” -->
+          <div class="stem"></div>
+          <div class="leaf leaf-left"></div>
+          <div class="leaf leaf-right"></div>
 
-          <div class="rose rose--center">
-            <div class="petal-ring petal-ring--outer"></div>
-            <div class="petal-ring petal-ring--inner"></div>
-            <div class="bud-core"></div>
-            <div class="stem"></div>
-            <div class="leaf leaf-left"></div>
-            <div class="leaf leaf-right"></div>
-          </div>
+          <div class="flower flower--left"></div>
+          <div class="flower flower--center"></div>
+          <div class="flower flower--right"></div>
 
-          <div class="rose rose--right">
-            <div class="petal-ring petal-ring--outer"></div>
-            <div class="petal-ring petal-ring--inner"></div>
-            <div class="bud-core"></div>
-            <div class="stem"></div>
-            <div class="leaf leaf-left"></div>
-            <div class="leaf leaf-right"></div>
-          </div>
-
-          <!-- carta bouquet -->
           <div class="wrap">
             <div class="wrap-left"></div>
             <div class="wrap-right"></div>
@@ -97,23 +63,17 @@
           </div>
         </div>
       </div>
-
-      <!-- piccole rose “pacchetti” che scorrono come bytes in viaggio -->
-      <div class="bit-rose bit-rose--1"></div>
-      <div class="bit-rose bit-rose--2"></div>
-      <div class="bit-rose bit-rose--3"></div>
     </section>
 
     <section class="caption">
-      <p>
-        Ogni passaggio dei trattini è un frammento del tuo pensiero
-        che vola dall’altra parte del mondo, in un bouquet di rose digitali.
+      <p id="captionText">
+        Invio in corso: le rose stanno attraversando l’oceano digitale…
       </p>
     </section>
   </main>
 
   <footer class="footer">
-    <small>Concept: rose spedite via “email” – demo creativa in HTML, CSS &amp; SVG.</small>
+    <small>Concept: rose spedite via “email” – demo creativa in HTML, CSS &amp; JavaScript.</small>
   </footer>
 
   <script src="script.js"></script>
