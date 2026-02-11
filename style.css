@@ -104,15 +104,39 @@ body{
 .rose-packet{
   position:absolute;
   top:50%;
-  width:20px;
-  height:20px;
-  border-radius:50%;
+  width:22px;
+  height:22px;
   transform:translate(-50%, -50%);
+  border-radius:50%;
+  /* base del bocciolo */
   background:
-    radial-gradient(circle at 30% 20%, var(--rose-light) 0, var(--rose-mid) 35%, var(--rose) 65%, var(--rose-deep) 100%);
-  box-shadow:0 0 12px rgba(255,68,122,.8);
+    radial-gradient(circle at 30% 20%, #ffd9e6 0, #ff6b8f 35%, #ff2b5c 65%, #990826 100%);
+  box-shadow:0 0 14px rgba(255,68,122,.9);
   animation:packet-move 5s linear forwards;
   opacity:0;
+}
+
+/* petali esterni (halo) */
+.rose-packet::before{
+  content:"";
+  position:absolute;
+  inset:-4px;
+  border-radius:50%;
+  background:
+    radial-gradient(circle at 20% 20%, rgba(255,217,230,.8) 0, rgba(255,107,143,.2) 35%, transparent 70%);
+  opacity:.9;
+}
+
+/* “curva” interna dei petali per un minimo di volume */
+.rose-packet::after{
+  content:"";
+  position:absolute;
+  inset:5px;
+  border-radius:50%;
+  background:
+    conic-gradient(from 210deg, #ff2b5c 0 120deg, #ff6b8f 120deg 220deg, #990826 220deg 360deg);
+  mix-blend-mode:screen;
+  opacity:.75;
 }
 
 .rose-packet--1{animation-delay:0s;}
@@ -137,6 +161,7 @@ body{
     opacity:0;
   }
 }
+
 
 main{
   width:100%;
@@ -193,64 +218,93 @@ main{
 }
 
 /* bouquet “logo” */
+/* bouquet “quasi 3D” */
 .flower{
   position:absolute;
-  top:40px;
-  width:60px;
-  height:60px;
+  top:30px;
+  width:70px;
+  height:70px;
   border-radius:50%;
   background:
-    radial-gradient(circle at 30% 20%, var(--rose-light) 0, var(--rose-mid) 25%, var(--rose) 60%, var(--rose-deep) 100%);
-  box-shadow:0 0 18px rgba(255,68,122,.8);
+    radial-gradient(circle at 28% 20%, #ffe6f0 0, #ff8aaa 25%, #ff2b5c 55%, #7a041d 95%);
+  box-shadow:
+    0 0 22px rgba(255,68,122,.9),
+    0 10px 18px rgba(0,0,0,.55);
 }
-.flower::before,
+
+/* anello di petali */
+.flower::before{
+  content:"";
+  position:absolute;
+  inset:4px;
+  border-radius:50%;
+  background:
+    conic-gradient(from 210deg, #ff466e 0 120deg, #ff8aaa 120deg 220deg, #990826 220deg 360deg);
+  opacity:.95;
+}
+
+/* cuore del bocciolo */
 .flower::after{
   content:"";
   position:absolute;
-  inset:10px;
+  inset:18px;
   border-radius:50%;
   background:
-    conic-gradient(from 200deg, var(--rose) 0 120deg, var(--rose-mid) 120deg 220deg, var(--rose-deep) 220deg 360deg);
-  opacity:.85;
-}
-.flower::after{
-  inset:20px;
-  background:radial-gradient(circle at 30% 20%, var(--rose-light) 0, var(--rose-mid) 35%, var(--rose-deep) 100%);
+    radial-gradient(circle at 30% 20%, #ffeef6 0, #ff8aaa 35%, #7a041d 100%);
+  box-shadow:0 0 10px rgba(0,0,0,.7);
 }
 
 .flower--center{
   left:50%;
-  transform:translateX(-50%);
+  transform:translateX(-50%) translateY(2px);
 }
 .flower--left{
   left:28%;
-  transform:translateX(-50%) translateY(10px) scale(.9);
+  transform:translateX(-50%) translateY(14px) scale(.92);
 }
 .flower--right{
   left:72%;
-  transform:translateX(-50%) translateY(10px) scale(.9);
+  transform:translateX(-50%) translateY(14px) scale(.92);
 }
 
-/* gambo e foglie */
+/* gambo più “solido” */
 .stem{
   position:absolute;
-  bottom:40px;
+  bottom:38px;
   left:50%;
-  width:8px;
-  height:130px;
+  width:9px;
+  height:138px;
   transform:translateX(-50%);
-  background:linear-gradient(180deg,var(--stem),#064d26);
+  background:
+    linear-gradient(180deg,#1bbf68 0,#0b7c42 60%,#064326 100%);
   border-radius:999px;
-  box-shadow:0 0 6px rgba(0,0,0,.6);
+  box-shadow:
+    0 0 8px rgba(0,0,0,.7),
+    0 10px 14px rgba(0,0,0,.7);
 }
+
+/* foglie con vena centrale */
 .leaf{
   position:absolute;
-  width:36px;
-  height:22px;
-  background:radial-gradient(circle at 20% 20%, #52e28c, var(--leaf));
+  width:42px;
+  height:24px;
+  background:
+    linear-gradient(135deg,#52e28c,#15a155);
   border-radius:80% 0 80% 0;
-  box-shadow:0 0 6px rgba(0,0,0,.4);
+  box-shadow:0 0 6px rgba(0,0,0,.45);
 }
+.leaf::after{
+  content:"";
+  position:absolute;
+  left:50%;
+  top:4px;
+  width:2px;
+  height:16px;
+  transform:translateX(-50%);
+  background:rgba(0,0,0,.22);
+  border-radius:999px;
+}
+
 .leaf-left{
   left:46%;
   top:150px;
@@ -258,17 +312,17 @@ main{
 }
 .leaf-right{
   left:54%;
-  top:160px;
+  top:162px;
   transform:translateX(-50%) rotate(30deg) scaleX(-1);
 }
 
-/* carta bouquet */
+/* carta bouquet più volumetrica */
 .wrap{
   position:absolute;
   bottom:0;
   left:50%;
   transform:translateX(-50%);
-  width:160px;
+  width:170px;
   height:120px;
 }
 .wrap-left,
@@ -278,33 +332,38 @@ main{
   width:50%;
   height:100%;
   background:var(--wrap);
-  box-shadow:0 8px 20px rgba(0,0,0,.45);
+  box-shadow:0 10px 24px rgba(0,0,0,.55);
 }
 .wrap-left{
   left:0;
   border-radius:80px 0 20px 80px;
   transform-origin:bottom left;
-  transform:skewX(-8deg);
-  background:linear-gradient(135deg,var(--wrap),var(--wrap-shadow));
+  transform:skewX(-10deg);
+  background:
+    linear-gradient(135deg,#fbe6d9 0,#f0d1c0 45%,#d0b5a3 100%);
 }
 .wrap-right{
   right:0;
   border-radius:0 80px 80px 20px;
   transform-origin:bottom right;
-  transform:skewX(8deg);
-  background:linear-gradient(225deg,var(--wrap),var(--wrap-shadow));
+  transform:skewX(10deg);
+  background:
+    linear-gradient(225deg,#fbe6d9 0,#f0d1c0 45%,#d0b5a3 100%);
 }
 .ribbon{
   position:absolute;
-  bottom:26px;
+  bottom:30px;
   left:50%;
   transform:translateX(-50%);
-  width:72px;
+  width:80px;
   height:18px;
   background:linear-gradient(90deg,#ff2144,#ff6b8f);
   border-radius:999px;
-  box-shadow:0 0 12px rgba(255,33,68,.7);
+  box-shadow:
+    0 0 12px rgba(255,33,68,.8),
+    0 6px 10px rgba(0,0,0,.6);
 }
+
 
 .caption{
   margin-top:26px;
